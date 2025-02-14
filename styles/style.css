@@ -1,0 +1,21 @@
+html {
+  font-size: clamp(14px, 1.5vw, 18px);
+  overscroll-behavior: none;
+  position: fixed;
+  overflow: hidden;
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+* {
+  font-family: var(--font-family);
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
