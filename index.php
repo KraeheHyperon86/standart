@@ -18,8 +18,9 @@ include_once "./include/autoloader.php";
   <body>
 
     <script defer>
+      const ROOT = <?php echo Config::ROOT?>
       if("serviceWorker" in navigator) {
-        navigator.serviceWorker.register("/tetris/scripts/sw.js", { scope:" /tetris/" })
+        navigator.serviceWorker.register(`/${ROOT}/scripts/sw.js`, { scope:` /${ROOT}/` })
         .then(function(registration) {
           console.log("ServiceWorker registration successful with scope: ", registration.scope);
         })
