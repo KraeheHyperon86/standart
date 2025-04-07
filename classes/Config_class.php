@@ -6,6 +6,7 @@ class Config {
   const URL = 'localhost/standart';
   const DOMAIN = 'localhost';
   const TITLE = 'standart'; 
+  const ROOT = 'standart';
 
 
   //USER Auth Table 
