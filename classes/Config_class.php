@@ -17,18 +17,20 @@ class Config {
 
 
   //MySQL server connection details
-
-  const SERVER_NAME = "localhost";
+  const DB_NAME = "";
+  const SERVER_NAME = "localhost"; // Is always localhost
   const USER_NAME = "root";
   const PASSWORD = "";
   const PORT = "3306";
 
   //Session Config
 
-  //Minutes until session expires
-  const SESSION_TIMEOUT = 30;
+ //Minutes until session expiresDOMAIN
+  const SESSION_TIMEOUT = 120;
   //seconds until cookie expires
-  const COOKIE_TTL = 1800;
-  //seconds until cookie expires
-  const HTTPS_ONLY = true;
+  const COOKIE_TTL = 7200;
+  // Deny Sesssion Acess from Client Side Script
+  const HTTP_ONLY = true;
+  // Session will only be sent over HTTPS, false while in develop
+  const SECURE = false;
 }
