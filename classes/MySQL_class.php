@@ -22,7 +22,6 @@ class MySQL  {
       die("Keine Verbindung zur Datenbank möglich");
     }
     $db = new mysqli($SERVER, $USER_NAME, $PASSWORD, $DB_NAME, $PORT);
-
   }
 
   function selectDB2assoc($sql, $show = 0) : array {
@@ -94,9 +93,10 @@ class MySQL  {
   
     // Abfrage ausführen
     if ($this->db->query($sql) === TRUE) {
+      return 1;
     } 
     else {
-      echo "Fehler beim Löschen des Datensatzes: " . $this->db->error;
+      return -1;
     }
   
   }
@@ -156,7 +156,6 @@ class MySQL  {
       return $result->fetch_assoc()[$columnName];
     } 
     else {
-      echo "Keine Ergebnisse gefunden";
       return -1;
     }
     
@@ -181,7 +180,6 @@ class MySQL  {
       return $this->db->insert_id;
     } 
     else {
-      echo "Fehler beim Einfügen des Datensatzes: " . $this->db->error;
       return -1;
     }
   
