@@ -1,7 +1,34 @@
 <?php
 include_once "./include/autoloader.php";
 
-?>
+$session = new Session();
+$db = new MySQL();
+
+
+$auth   = Validate::filterRequest("auth", 'string', 'login');
+
+$id = 0;
+$name = '';
+$alert = $session->getSessionValue('alert') ?? '';
+
+if($session->isUserLoged()) {
+  $id = $session->getUserID();
+  $name = $session->getSessionValue('name');
+}
+
+echo '<script>';
+if(!empty($alert)) {
+
+  echo 'const ALERT = "'.$alert.'"';
+  if($session->getSessionValue('alert') != null) {
+    $session->unsetSessionValue('alert');
+  }
+}
+else {
+  echo 'const ALERT = null';
+}
+echo '</script>';
+
 <!DOCTYPE html>
 <html lang="de">
   <head>
