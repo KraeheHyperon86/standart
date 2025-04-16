@@ -13,7 +13,7 @@ class Validate {
    * @brief BRIEFING
    */
   static function filterRequest($input, $typ, $default) {
-    $value = $_REQUEST[$input] ?? $_SESSION[$input] ?? null;
+    $value = $_REQUEST[$input] ?? null;
 
     switch ($typ) {
       case 'array_int':
