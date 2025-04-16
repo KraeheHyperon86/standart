@@ -5,11 +5,12 @@ include_once "Config_class.php";
 
 class Session {
 
-  const EINE_MINUTE = 60;
+  const ZWEI_STUNDEN = 7200;
   private int $_session_TimeOut = Config::SESSION_TIMEOUT;
   private int $_cookie_TimeOut = Config::COOKIE_TTL;
   private string $_domain = Config::DOMAIN;
-  private bool $_https_only = Config::HTTPS_ONLY;
+  private bool $_secure = Config::SECURE;
+  private bool $_http_only = Config::HTTP_ONLY;
 
   public function __construct() {
 
@@ -20,8 +21,8 @@ class Session {
       'lifetime' => $this->_cookie_TimeOut,
       'domain' => $this->_domain,
       'path' => '/',
-      'secure' => true,
-      'httponly' => $this->_https_only,
+      'secure' => $this->_secure,
+      'httponly' => $this->_http_only,
     ]);
 
 
@@ -38,7 +39,7 @@ class Session {
       $_SESSION['last_regeneration'] = time();
     }
     else {
-      $intvall = self::EINE_MINUTE * $this->_session_TimeOut;
+      $intvall = self::ZWEI_STUNDEN * $this->_session_TimeOut;
       if (time() - $_SESSION['last_regeneration'] >= $intvall) {
         $this->logoutUser();
       }
@@ -59,6 +60,10 @@ class Session {
       return null;
     }
     return $_SESSION[$keyName];
+  }
+
+  public function unsetSessionValue($keyName) {
+    unset($_SESSION[$keyName]);
   }
 
   public function isUserLoged() {
