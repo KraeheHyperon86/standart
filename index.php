@@ -47,7 +47,7 @@ echo '</script>';
     <script defer>
       const ROOT = <?php echo Config::ROOT?>
       if("serviceWorker" in navigator) {
-        navigator.serviceWorker.register(`/${ROOT}/scripts/sw.js`, { scope:` /${ROOT}/` })
+        navigator.serviceWorker.register(`/${ROOT}/sw.js`, { scope:` /${ROOT}/` })
         .then(function(registration) {
           console.log("ServiceWorker registration successful with scope: ", registration.scope);
         })
